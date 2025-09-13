@@ -1,0 +1,43 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+modules:
+  - type: files
+    files:
+      - source: common
+      - destination: /
+  - type: dnf
+    repos:
+      files:
+        - "https://download.docker.com/linux/fedora/docker-ce.repo"
+        - "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-%OS_VERSION%.noarch.rpm"
+        - "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-%OS_VERSION%.noarch.rpm"
+    remove:
+      packages:
+        - power-profiles-daemon # we replace with tuned
+    install:
+      packages:
+        - "docker-ce"
+        - "docker-ce-cli"
+        - "containerd.io"
+        - "docker-buildx-plugin"
+        - "docker-compose-plugin"
+        - "gcc"
+        - "clang"
+        - "mold"
+        - "zsh"
+        - "openssl"
+        - "p7zip"
+        - "unzip"
+        - "smartmontools"
+        - "tuned"
+        - "tuned-ppd"
+        - "tuned-utils"
+        - "tuned-utils-systemtap"
+        - "tuned-profiles-atomic"
+        - "virt-install"
+        - "libvirt-daemon-config-network"
+        - "libvirt-daemon-kvm"
+        - "qemu-kvm"
+        - "guestfs-tools"
+        - "python3-libguestfs"
+        - "virt-top"

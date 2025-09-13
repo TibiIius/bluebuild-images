@@ -1,0 +1,12 @@
+#!/bin/sh
+
+if [[ ! $(lsblk | grep /var/mnt/backup) ]]; then
+  echo "Backup drive not mounted!"
+  exit 1
+fi
+
+rsync -avhXA --info=progress --delete --delete-after /var/mnt/storage/nextcloud/ /var/mnt/backup/nextcloud/
+rsync -avhXA --info=progress --delete --delete-after /var/mnt/storage/backups/   /var/mnt/backup/backups/
+rsync -avhXA --info=progress --delete --delete-after /var/mnt/storage/data/      /var/mnt/backup/data/
+rsync -avhXA --info=progress --delete --delete-after /var/mnt/storage/immich/    /var/mnt/backup/immich/
+rsync -avhXA --info=progress --delete --delete-after /var/mnt/storage/jellyfin/  /var/mnt/backup/jellyfin/

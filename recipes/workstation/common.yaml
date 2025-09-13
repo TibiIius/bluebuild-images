@@ -1,0 +1,53 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+modules:
+  - from-file: common.yaml
+  - type: files
+    files:
+      - source: workstation
+        destination: /
+  - type: dnf
+    install:
+      packages:
+        - "https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-Fedora-40-x86_64.rpm"
+        - "distrobox"
+        - "flatpak-builder"
+        - "libratbag-ratbagd"
+        - "steam-devices"
+        - "google-noto-sans-cjk-fonts"
+        - "google-noto-serif-cjk-fonts"
+        - "virt-manager"
+        - "virt-viewer"
+        - "vagrant"
+        - "vagrant-libvirt"
+        - "openrgb-udev-rules"
+        - "i2c-tools"
+        - "libi2c"
+        - "libi2c-devel"
+  - type: script
+    snippets:
+      # Download PlatformIO udev rules so that PlatformIO can access USB devices
+      - "curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules -o /etc/udev/rules.d/99-platformio-udev.rules"
+      # Add `disk` group to the system
+      - "grep -E '^disk:' /usr/lib/group >> /etc/group"
+      # ld alternatives
+      - "ln -sf /usr/bin/ld.bfd /etc/alternatives/ld && ln -sf /etc/alternatives/ld /usr/bin/ld"
+      - "ln -s '/usr/share/fonts/google-noto-sans-cjk-fonts' '/usr/share/fonts/noto-cjk'"
+      - "sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf"
+      # Libvirt install workaround
+      - "rm -rf /var/*"
+  - type: systemd
+    system:
+      enabled:
+        - "rpm-ostreed-automatic.timer"
+        - "firstboot.service"
+        - "docker.service"
+        - "tuned.service"
+        - "libvirtd.service"
+  - type: default-flatpaks
+    configurations:
+      - scope: system
+        notify: true
+        install:
+          - "org.mozilla.firefox"
+          - "com.github.tchx84.Flatseal"

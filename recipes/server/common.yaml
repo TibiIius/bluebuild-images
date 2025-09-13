@@ -1,0 +1,33 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+modules:
+  - from-file: common.yaml
+  - type: files
+    files:
+      - source: server
+        destination: /
+  - type: dnf
+    install:
+      packages:
+        - "borgbackup"
+        - "htop"
+        - "policycoreutils-python-utils"
+        - "powertop"
+        - "smartmontools"
+
+  - type: script
+    snippets:
+      - "sed -i 's/AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=apply/' /etc/rpm-ostreed.conf"
+      # Adjust auto-update timer
+      - "sed -i 's/OnBootSec=.*/OnCalendar=*-*-* 04:30:00/g' /usr/lib/systemd/system/rpm-ostreed-automatic.timer"
+  - type: systemd
+    system:
+      enabled:
+        - "rpm-ostreed-automatic.timer"
+        - "firstboot.service"
+        - "docker.service"
+        - "tuned.service"
+        - "libvirtd.service"
+        - "backup-volumes.timer"
+      disabled:
+        - "firewalld.service"

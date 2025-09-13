@@ -1,0 +1,15 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: kinoite-nvidia
+description: A variant of kinoite-main with NVIDIA drivers and settings.
+
+base-image: ghcr.io/ublue-os/kinoite-nvidia
+image-version: latest
+
+modules:
+  - from-file: workstation/kinoite/base.yaml
+  - from-file: workstation/common-nvidia.yaml
+  - type: script
+    # Enable HDR
+    snippets:
+      - echo KWIN_DRM_ALLOW_NVIDIA_COLORSPACE=1 >> /etc/environment

@@ -1,0 +1,10 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: silverblue-main
+description: A basic Silverblue image with some tweaks and pre-installed packages.
+
+base-image: ghcr.io/ublue-os/silverblue-main
+image-version: latest
+
+modules:
+  - from-file: workstation/silverblue/base.yaml

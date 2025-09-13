@@ -1,0 +1,10 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+modules:
+  - from-file: common-nvidia.yaml
+  - type: dnf
+    install:
+      packages:
+        - "nvidia-settings"
+        - "nvidia-container-toolkit"
+        - "cuda-devel"

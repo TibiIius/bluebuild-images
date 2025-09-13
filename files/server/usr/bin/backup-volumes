@@ -1,0 +1,37 @@
+#!/bin/sh
+
+ROOT_DIR=/var/lib/docker/volumes/
+
+if [[ -d $ROOT_DIR ]]; then
+    echo "Backing up Docker volumes..."
+    /usr/bin/rsync -avhXA --info=progress --delete --delete-after $ROOT_DIR /var/mnt/storage/backups/server/volumes/volumes-root/ || true
+    echo "Finished backing up Docker volumes"
+fi
+
+# Backup Nextcloud DB
+if docker exec nextcloud-nextcloud-db-1 pg_isready -U nextcloud >/dev/null 2>&1 ; then
+    mkdir -p /var/mnt/storage/backups/server/postgres/nextcloud
+    echo "Backing up Nextcloud database..."
+    echo "Turning on Nextcloud maintenance mode..."
+    docker exec -u www-data nextcloud-nextcloud-app-1 /usr/local/bin/php /var/www/html/occ maintenance:mode --on
+    docker exec nextcloud-nextcloud-db-1 pg_dumpall -c -U nextcloud | gzip > /var/mnt/storage/backups/server/postgres/nextcloud/dump_$(date +"%Y-%m-%d_%H_%M_%S").sql.gz
+    docker exec -u www-data nextcloud-nextcloud-app-1 /usr/local/bin/php /var/www/html/occ maintenance:mode --off
+    echo "Nextcloud maintenance mode turned off!"
+    echo "Finished backing up Nextcloud database!"
+fi
+
+# Backup Vaultwarden
+if docker exec vaultwarden-pg-1 pg_isready -U bitwarden >/dev/null 2>&1 ; then
+    mkdir -p /var/mnt/storage/backups/server/postgres/vaultwarden
+    echo "Backing up Vaultwarden database..."
+    docker exec vaultwarden-pg-1 pg_dumpall -c -U bitwarden | gzip > /var/mnt/storage/backups/server/postgres/vaultwarden/dump_$(date +"%Y-%m-%d_%H_%M_%S").sql.gz
+    echo "Finished backing up Vaultarden database!"
+fi
+
+# Backup Synapse
+if docker exec synapse-pg-1 pg_isready -U synapse >/dev/null 2>&1 ; then
+    mkdir -p /var/mnt/storage/backups/server/postgres/synapse
+    echo "Backing up Synapse database..."
+    docker exec synapse-pg-1 pg_dumpall -c -U synapse | gzip > /var/mnt/storage/backups/server/postgres/synapse/dump_$(date +"%Y-%m-%d_%H_%M_%S").sql.gz
+    echo "Finished backing up Synapse database!"
+fi

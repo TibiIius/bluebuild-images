@@ -1,0 +1,9 @@
+[Unit]
+Description=Backup docker volumes
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/bin/backup-volumes
+[Install]
+WantedBy=timers.target

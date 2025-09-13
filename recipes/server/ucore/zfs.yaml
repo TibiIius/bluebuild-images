@@ -1,0 +1,16 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: ucore-hci
+description: A basic Silverblue image with some tweaks and pre-installed packages.
+
+base-image: ghcr.io/ublue-os/ucore-hci
+image-version: stable-zfs
+
+modules:
+  - from-file: server/ucore/base.yaml
+  - type: systemd
+    system:
+      enabled:
+        - "zfs-import-scan.service"
+      disabled:
+        - "zfs-import-cache.service"
