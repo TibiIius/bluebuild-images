@@ -9,3 +9,4 @@ image-version: latest
 modules:
   - from-file: workstation/silverblue/base.yaml
   - from-file: workstation/common-nvidia.yaml
+  - type: signing

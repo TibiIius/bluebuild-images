@@ -13,3 +13,4 @@ modules:
     # Enable HDR
     snippets:
       - echo KWIN_DRM_ALLOW_NVIDIA_COLORSPACE=1 >> /etc/environment
+  - type: signing

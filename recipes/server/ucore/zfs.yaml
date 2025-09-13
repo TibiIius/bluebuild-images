@@ -14,3 +14,4 @@ modules:
         - "zfs-import-scan.service"
       disabled:
         - "zfs-import-cache.service"
+  - type: signing

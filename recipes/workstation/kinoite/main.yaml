@@ -8,3 +8,4 @@ image-version: latest
 
 modules:
   - from-file: workstation/kinoite/base.yaml
+  - type: signing
