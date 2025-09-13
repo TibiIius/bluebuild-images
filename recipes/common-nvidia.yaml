@@ -32,4 +32,3 @@ modules:
   - type: script
     snippets:
       - "ln -s /usr/lib/libnvidia-ml.so.1 /usr/lib/libnvidia-ml.so"
-      - "rm -rf /tmp/* /var/*"

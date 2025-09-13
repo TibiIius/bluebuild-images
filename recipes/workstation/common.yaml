@@ -34,8 +34,6 @@ modules:
       - "ln -sf /usr/bin/ld.bfd /etc/alternatives/ld && ln -sf /etc/alternatives/ld /usr/bin/ld"
       - "ln -s '/usr/share/fonts/google-noto-sans-cjk-fonts' '/usr/share/fonts/noto-cjk'"
       - "sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf"
-      # Libvirt install workaround
-      - "rm -rf /var/*"
   - type: systemd
     system:
       enabled:
