@@ -13,6 +13,9 @@ modules:
     remove:
       packages:
         - power-profiles-daemon # we replace with tuned
+        # We will use docker-ce
+        - "moby-engine"
+        - "docker-cli"
     install:
       packages:
         - "docker-ce"
