@@ -6,6 +6,9 @@ description: A basic Silverblue image with some tweaks and pre-installed package
 base-image: ghcr.io/ublue-os/ucore-hci
 image-version: stable-zfs
 
+alt-tags:
+  - stable-zfs
+
 modules:
   - from-file: server/ucore/base.yaml
   - type: systemd
