@@ -12,7 +12,11 @@ modules:
         - "https://download.docker.com/linux/fedora/docker-ce.repo"
     remove:
       packages:
-        - power-profiles-daemon # we replace with tuned
+        - power-profiles-daemon # We replace with tuned
+        # We use Flatpaks for Firefox
+        - firefox
+        - firefox-langpacks
+        - toolbox # We got distrobox just in case
         # We will use docker-ce
         - "moby-engine"
         - "docker-cli"
