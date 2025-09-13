@@ -34,14 +34,6 @@ modules:
       - "ln -sf /usr/bin/ld.bfd /etc/alternatives/ld && ln -sf /etc/alternatives/ld /usr/bin/ld"
       - "ln -s '/usr/share/fonts/google-noto-sans-cjk-fonts' '/usr/share/fonts/noto-cjk'"
       - "sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf"
-  - type: systemd
-    system:
-      enabled:
-        - "rpm-ostreed-automatic.timer"
-        - "firstboot.service"
-        - "docker.service"
-        - "tuned.service"
-        - "libvirtd.service"
   - type: default-flatpaks
     configurations:
       - scope: system

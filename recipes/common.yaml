@@ -43,3 +43,10 @@ modules:
         - "guestfs-tools"
         - "python3-libguestfs"
         - "virt-top"
+  - type: systemd
+    system:
+      enabled:
+        - "rpm-ostreed-automatic.timer"
+        - "docker.service"
+        - "tuned.service"
+        - "libvirtd.service"
