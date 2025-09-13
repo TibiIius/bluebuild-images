@@ -1,5 +1,5 @@
 ---
-# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - type: files
     files:
@@ -7,9 +7,9 @@ modules:
       - destination: /
   - type: dnf
     repos:
+      nonfree: rpmfusion
       files:
         - "https://download.docker.com/linux/fedora/docker-ce.repo"
-    nonfree: rpmfusion
     remove:
       packages:
         - power-profiles-daemon # we replace with tuned
