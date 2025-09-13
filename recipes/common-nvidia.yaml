@@ -5,6 +5,8 @@ modules:
     files:
       - source: nvidia/common
       - destination: /
+  - type: dnf
+    nonfree: negativo17
   - type: script
     snippets:
       - "sed -i '0,/enabled=0/{s/enabled=0/enabled=1/}' /etc/yum.repos.d/eyecantcu-supergfxctl.repo"
