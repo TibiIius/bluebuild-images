@@ -7,4 +7,3 @@ modules:
       packages:
         - "nvidia-settings"
         - "nvidia-container-toolkit"
-        - "cuda-devel"
