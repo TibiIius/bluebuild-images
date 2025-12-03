@@ -22,7 +22,5 @@ modules:
       - "sed -i 's/OnBootSec=.*/OnCalendar=Sat 04:30:00/g' /usr/lib/systemd/system/rpm-ostreed-automatic.timer"
   - type: systemd
     system:
-      enabled:
-        - "backup-volumes.timer"
       disabled:
         - "firewalld.service"
