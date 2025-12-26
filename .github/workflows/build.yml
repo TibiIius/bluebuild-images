@@ -28,6 +28,7 @@ jobs:
         recipe:
           # !! Add your recipes here
           - server/ucore/main.yaml
+          - server/ucore/nvidia.yaml
           - workstation/silverblue/main.yaml
           - workstation/silverblue/nvidia.yaml
           - workstation/kinoite/main.yaml
