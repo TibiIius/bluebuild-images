@@ -4,10 +4,10 @@ name: ucore-hci
 description: A basic uCore image with some tweaks and pre-installed packages. NVIDIA version
 
 base-image: ghcr.io/ublue-os/ucore-hci
-image-version: stable-nvidia
+image-version: stable-nvidia-lts
 
 alt-tags:
-  - stable-zfs-nvidia
+  - stable-zfs-nvidia-lts
 
 modules:
   - from-file: server/ucore/base.yaml
