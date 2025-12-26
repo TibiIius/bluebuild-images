@@ -2,3 +2,10 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: server/common.yaml
+  - type: systemd
+    system:
+      enabled:
+        - "zfs-import-scan.service"
+      disabled:
+        - "zfs-import-cache.service"
+  - type: signing

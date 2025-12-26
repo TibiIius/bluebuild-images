@@ -27,7 +27,7 @@ jobs:
       matrix:
         recipe:
           # !! Add your recipes here
-          - server/ucore/zfs.yaml
+          - server/ucore/main.yaml
           - workstation/silverblue/main.yaml
           - workstation/silverblue/nvidia.yaml
           - workstation/kinoite/main.yaml
