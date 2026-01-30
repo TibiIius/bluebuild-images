@@ -1,2 +1,2 @@
 [tools]
-"cargo:blue-build" = "latest"
+"cargo:blue-build" = "v0.9.28"
