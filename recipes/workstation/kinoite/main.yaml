@@ -3,7 +3,7 @@
 name: kinoite-main
 description: A basic Silverblue image with some tweaks and pre-installed packages.
 
-base-image: ghcr.io/ublue-os/kinoite-main
+base-image: ghcr.io/blue-build/base-images/fedora-kinoite
 image-version: latest
 
 modules:

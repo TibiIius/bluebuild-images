@@ -3,7 +3,7 @@
 name: silverblue-main
 description: A basic Silverblue image with some tweaks and pre-installed packages.
 
-base-image: ghcr.io/blue-build/base-images/fedora-silverblue-main
+base-image: ghcr.io/blue-build/base-images/fedora-silverblue
 image-version: latest
 
 modules:
