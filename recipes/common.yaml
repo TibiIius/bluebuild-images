@@ -50,7 +50,6 @@ modules:
   - type: systemd
     system:
       enabled:
-        - "rpm-ostreed-automatic.timer"
         - "docker.service"
         - "tuned.service"
         - "libvirtd.service"
