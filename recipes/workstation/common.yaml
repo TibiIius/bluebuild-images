@@ -28,6 +28,8 @@ modules:
     snippets:
       # Download PlatformIO udev rules so that PlatformIO can access USB devices
       - "curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules -o /etc/udev/rules.d/99-platformio-udev.rules"
+      # Download udev rules for OpenRGB
+      - "curl -fsSL https://openrgb.org/releases/release_0.9/60-openrgb.rules -o /etc/udev/rules.d/60-openrgb.rules"
       # Add `disk` group to the system
       - "grep -E '^disk:' /usr/lib/group >> /etc/group"
       # ld alternatives
