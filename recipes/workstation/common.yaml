@@ -45,5 +45,5 @@ modules:
           - "com.github.tchx84.Flatseal"
   - type: systemd
     system:
-      enabled:
+      disabled:
         - "bootc-fetch-apply-updates.timer"
