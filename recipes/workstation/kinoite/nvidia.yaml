@@ -3,7 +3,7 @@
 name: kinoite-nvidia
 description: A variant of kinoite-main with NVIDIA drivers and settings.
 
-base-image: ghcr.io/blue-build/base-images/fedora-kinoite-nvidia
+base-image: ghcr.io/ublue-os/kinoite-nvidia
 image-version: latest
 
 modules:

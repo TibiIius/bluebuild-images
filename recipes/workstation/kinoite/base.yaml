@@ -2,8 +2,4 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: workstation/common.yaml
-  - type: systemd
-    system:
-      enabled:
-        - "bootc-fetch-apply-updates.timer"
 

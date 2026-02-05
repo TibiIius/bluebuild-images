@@ -41,3 +41,7 @@ modules:
         install:
           - "org.mozilla.firefox"
           - "com.github.tchx84.Flatseal"
+  - type: systemd
+    system:
+      enabled:
+        - "bootc-fetch-apply-updates.timer"
