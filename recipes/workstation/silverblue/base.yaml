@@ -2,11 +2,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: workstation/common.yaml
-  - type: script
-    # Fix laggy mouse cursor under Wayland (allows mouse cursor to update independent of the rest of the screen)
-    # Also, setting MUTTER_DEBUG_FORCE_KMS_MODE is required for GNOMR VRR to work properly
-    snippets:
-      - echo -e 'MUTTER_DEBUG_ENABLE_ATOMIC_KMS=0\nMUTTER_DEBUG_FORCE_KMS_MODE=simple' >> /etc/environment
   - type: dnf
     remove:
       packages:
