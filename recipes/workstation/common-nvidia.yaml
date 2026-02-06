@@ -7,3 +7,7 @@ modules:
       packages:
         - "nvidia-settings"
         - "nvidia-container-toolkit"
+  - type: script
+# Fixes for GPUs in Podman containers
+    snippets:
+      - curl -fsSL https://raw.githubusercontent.com/NVIDIA/dgx-selinux/master/bin/RHEL7/nvidia-container.pp -o /tmp/nvidia-container.pp && semodule -i /tmp/nvidia-container.pp && nvidia-container-cli -k list | restorecon -v -f - && restorecon -Rv /dev
