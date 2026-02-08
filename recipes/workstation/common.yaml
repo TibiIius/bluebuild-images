@@ -24,6 +24,10 @@ modules:
         - "i2c-tools"
         - "libi2c"
         - "libi2c-devel"
+  - type: akmods
+    base: main
+    install:
+      - v4l2loopback
   - type: script
     snippets:
       # Download PlatformIO udev rules so that PlatformIO can access USB devices
