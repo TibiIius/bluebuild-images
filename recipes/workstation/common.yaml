@@ -12,6 +12,7 @@ modules:
         - "https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-Fedora-40-x86_64.rpm"
         - "distrobox"
         - "flatpak-builder"
+        - "foundry"
         - "libratbag-ratbagd"
         - "steam-devices"
         - "google-noto-sans-cjk-fonts"
