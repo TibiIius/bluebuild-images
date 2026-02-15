@@ -7,6 +7,7 @@ modules:
       packages:
         - "nvidia-settings"
         - "nvidia-container-toolkit"
+        - "libva-nvidia-driver"
   - type: script
 # Fixes for GPUs in Podman containers
     snippets:
