@@ -30,7 +30,9 @@ jobs:
           - server/ucore/main.yaml
           - server/ucore/nvidia.yaml
           - workstation/silverblue/main.yaml
+          - workstation/silverblue/main-beta.yaml
           - workstation/silverblue/nvidia.yaml
+          - workstation/silverblue/nvidia-beta.yaml
           - workstation/kinoite/main.yaml
           - workstation/kinoite/nvidia.yaml
     steps:
