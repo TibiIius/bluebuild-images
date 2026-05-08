@@ -7,6 +7,10 @@ modules:
       - source: workstation
         destination: /
   - type: dnf
+    repos:
+      copr:
+        - wezfurlong/wezterm-nightly
+  - type: dnf
     install:
       packages:
         - "https://launchpad.net/veracrypt/trunk/1.26.14/+download/veracrypt-1.26.14-Fedora-40-x86_64.rpm"
@@ -25,6 +29,7 @@ modules:
         - "i2c-tools"
         - "libi2c"
         - "libi2c-devel"
+        - "wezterm"
   - type: akmods
     base: main
     install:
