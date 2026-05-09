@@ -3,10 +3,10 @@
 name: silverblue-main
 description: A basic Silverblue image with some tweaks and pre-installed packages.
 alt-tags:
-  - beta
+  - gts
 
 base-image: ghcr.io/ublue-os/silverblue-main
-image-version: beta
+image-version: gts
 
 modules:
   - from-file: workstation/silverblue/base.yaml
