@@ -10,8 +10,7 @@ modules:
     repos:
       copr:
         - wezfurlong/wezterm-nightly
-          # VeraCrypt
-        - cyfrost/packages
+        - bigjapka/VeraCrypt
   - type: dnf
     install:
       packages:
