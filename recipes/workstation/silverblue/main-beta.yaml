@@ -5,7 +5,7 @@ description: A basic Silverblue image with some tweaks and pre-installed package
 alt-tags:
   - beta
 
-base-image: ghcr.io/blue-build/base-images/fedora-silverblue
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: beta
 
 modules:

@@ -4,8 +4,7 @@ name: silverblue-main
 description: A basic Silverblue image with some tweaks and pre-installed packages.
 alt-tags:
   - gts
-
-base-image: ghcr.io/blue-build/base-images/fedora-silverblue
+base-image: ghcr.io/ublue-os/silverblue-main
 image-version: gts
 
 modules:
