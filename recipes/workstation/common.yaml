@@ -9,7 +9,6 @@ modules:
   - type: dnf
     repos:
       copr:
-        - wezfurlong/wezterm-nightly
         - bigjapka/VeraCrypt
   - type: dnf
     install:
@@ -29,7 +28,6 @@ modules:
         - "i2c-tools"
         - "libi2c"
         - "libi2c-devel"
-        - "wezterm"
         - "veracrypt"
   - type: akmods
     base: main
@@ -47,6 +45,19 @@ modules:
       - "ln -sf /usr/bin/ld.bfd /etc/alternatives/ld && ln -sf /etc/alternatives/ld /usr/bin/ld"
       - "ln -s '/usr/share/fonts/google-noto-sans-cjk-fonts' '/usr/share/fonts/noto-cjk'"
       - "sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf"
+      # Install build dependencies for wezterm (including rust toolchain and rpmbuild)
+      - "dnf install -y gtk3-devel wayland-devel mesa-libGL-devel libX11-devel sqlite-devel openssl-devel fontconfig-devel freetype-devel harfbuzz-devel libpng-devel libjpeg-turbo-devel pango-devel glib2-devel cmake pkg-config git libudev-devel alsa-lib-devel libayatana-appindicator-gtk3-devel python3 rust cargo rpm-build"
+      # Build wezterm from main branch with CSI 2031 PR and package as RPM
+      - "cd /tmp && git clone --depth 1 https://github.com/wez/wezterm.git wezterm-build 2>/dev/null || true"
+      - "curl -fsSL https://github.com/wez/wezterm/pull/7723.diff -o /tmp/wezterm-csi-2031.patch"
+      - "cd /tmp/wezterm-build && git apply /tmp/wezterm-csi-2031.patch"
+      - "mkdir -p /tmp/wezterm-rpms && cd /tmp/wezterm-build && ./ci/deploy.sh . && cp *.rpm /tmp/wezterm-rpms/ 2>/dev/null || true"
+      - "dnf install -y /tmp/wezterm-rpms/*.rpm || true"
+      - "rm -rf /tmp/wezterm-rpms"
+      # Remove build dependencies to keep image lean
+      - "dnf remove -y cmake pkg-config git gtk3-devel wayland-devel mesa-libGL-devel libX11-devel sqlite-devel openssl-devel fontconfig-devel freetype-devel harfbuzz-devel libpng-devel libjpeg-turbo-devel pango-devel glib2-devel libudev-devel alsa-lib-devel libayatana-appindicator-gtk3-devel python3 rust cargo rpm-build"
+      - "dnf autoremove -y"
+      - "dnf clean all"
   - type: default-flatpaks
     configurations:
       - scope: system
