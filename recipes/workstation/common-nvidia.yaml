@@ -2,6 +2,9 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: common-nvidia.yaml
+  - type: akmods
+    nvidia-driver: "nvidia-open"
+    install: []
   - type: dnf
     install:
       packages:

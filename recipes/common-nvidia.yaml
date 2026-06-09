@@ -5,6 +5,3 @@ modules:
     files:
       - source: nvidia/common
       - destination: /
-  - type: akmods
-    nvidia-driver: "nvidia-open"
-    install: []
