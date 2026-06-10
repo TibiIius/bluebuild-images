@@ -2,16 +2,9 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: common-nvidia.yaml
-  - type: akmods
-    nvidia-driver: "nvidia-open"
-    install: []
   - type: dnf
     install:
       packages:
         - "nvidia-settings"
         - "nvidia-container-toolkit"
         - "libva-nvidia-driver"
-  - type: script
-# Fixes for GPUs in Podman containers
-    snippets:
-      - curl -fsSL https://raw.githubusercontent.com/NVIDIA/dgx-selinux/master/bin/RHEL7/nvidia-container.pp -o /tmp/nvidia-container.pp && semodule -i /tmp/nvidia-container.pp && nvidia-container-cli -k list | restorecon -v -f - && restorecon -Rv /dev

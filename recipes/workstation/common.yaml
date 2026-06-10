@@ -82,10 +82,6 @@ modules:
         - "libi2c"
         - "libi2c-devel"
         - "veracrypt"
-  - type: akmods
-    base: main
-    install:
-      - v4l2loopback
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"

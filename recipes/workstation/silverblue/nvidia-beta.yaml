@@ -5,7 +5,7 @@ description: A variant of silverblue-main with NVIDIA drivers and settings.
 alt-tags:
   - beta
 
-base-image: ghcr.io/ublue-os/silverblue-main
+base-image: ghcr.io/blue-build/base-images/fedora-silverblue-nvidia-open
 image-version: beta
 
 modules:
