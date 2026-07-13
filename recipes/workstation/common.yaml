@@ -62,6 +62,7 @@ modules:
   - type: dnf
     repos:
       copr:
+        - wezfurlong/wezterm-nightly
         - bigjapka/VeraCrypt
   - type: dnf
     install:
@@ -81,6 +82,7 @@ modules:
         - "i2c-tools"
         - "libi2c"
         - "libi2c-devel"
+        - "wezterm"
         - "veracrypt"
   - type: script
     snippets:
