@@ -31,6 +31,7 @@ modules:
         - "libi2c-devel"
         - "wezterm"
         - "veracrypt"
+        - "snap"
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"
@@ -44,6 +45,8 @@ modules:
       - "ln -sf /usr/bin/ld.bfd /etc/alternatives/ld && ln -sf /etc/alternatives/ld /usr/bin/ld"
       - "ln -s '/usr/share/fonts/google-noto-sans-cjk-fonts' '/usr/share/fonts/noto-cjk'"
       - "sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf"
+      # Snap Classic support
+      - "ln -s /var/lib/snapd/snap /snap"
   - type: default-flatpaks
     configurations:
       - scope: system
@@ -55,3 +58,5 @@ modules:
     system:
       disabled:
         - "bootc-fetch-apply-updates.timer"
+      enabled:
+        - "snapd.socket"
