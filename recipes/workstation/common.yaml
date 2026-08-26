@@ -29,6 +29,7 @@ modules:
         - "libi2c"
         - "libi2c-devel"
         - "wezterm"
+        - "blackbox-terminal"
         - "veracrypt"
         - "snap"
   - type: script
