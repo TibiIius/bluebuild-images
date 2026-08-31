@@ -2,10 +2,6 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: workstation/common.yaml
-  - type: files
-    files:
-      - source: niri
-        destination: /
   - type: dnf
     repos:
       copr:
@@ -19,8 +15,7 @@ modules:
         # Shell/greeter
         - "quickshell"
         - "dms"
-        - "greetd"
-        - "dms-greeter"
+        - "gdm"
         # GUI apps
         - "nemo" # file manager
         - "nemo-fileroller" # file manager
@@ -56,8 +51,7 @@ modules:
         - "dsearch.service"
     system:
       enabled:
-        - "firstboot-user-create.service"
-        - "greetd.service"
+        - "gdm.service"
   - type: script
     snippets:
       # --global -> global user instance, same as running --user for all users
