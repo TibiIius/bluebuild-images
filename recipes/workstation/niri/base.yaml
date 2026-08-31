@@ -2,6 +2,10 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
 modules:
   - from-file: workstation/common.yaml
+  - type: files
+    files:
+      - source: niri
+        destination: /
   - type: dnf
     repos:
       copr:
@@ -15,7 +19,8 @@ modules:
         # Shell/greeter
         - "quickshell"
         - "dms"
-        - "gdm"
+        - "greetd"
+        - "dms-greeter"
         # GUI apps
         - "nemo" # file manager
         - "nemo-fileroller" # file manager
@@ -24,6 +29,7 @@ modules:
         # - "nautilus-admin-gtk4" # Open/Edit as root
         # - "nautilus-open-any-terminal"
         # DE essentials
+        - "initial-setup"
         - "mako" # notification daemonQ
         - "polkit"
         - "mate-polkit"
@@ -51,7 +57,8 @@ modules:
         - "dsearch.service"
     system:
       enabled:
-        - "gdm.service"
+        - "greetd.service"
+        - "initial-setup.service"
   - type: script
     snippets:
       # --global -> global user instance, same as running --user for all users
