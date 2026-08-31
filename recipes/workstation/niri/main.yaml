@@ -1,0 +1,11 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+name: niri-main
+description: A basic Niri image with some tweaks and pre-installed packages.
+
+base-image: ghcr.io/blue-build/base-images/fedora-base
+image-version: latest
+
+modules:
+  - from-file: workstation/niri/base.yaml
+  - type: signing

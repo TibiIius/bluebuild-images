@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+modules:
+  - from-file: workstation/common.yaml
+  - type: files
+    files:
+      - source: niri
+        destination: /
+  - type: dnf
+    repos:
+      copr:
+        - "avengemedia/dms"
+        - "yalter/niri"
+  - type: dnf
+    install:
+      packages:
+        # Niri base
+        - "niri"
+        # Shell/greeter
+        - "quickshell"
+        - "dms"
+        - "greetd"
+        - "dms-greeter"
+        # GUI apps
+        - "nemo" # file manager
+        - "nemo-fileroller" # file manager
+        - "nemo-preview" # file manager
+        - "nautilus" # needed for file picker
+        # - "nautilus-admin-gtk4" # Open/Edit as root
+        # - "nautilus-open-any-terminal"
+        # DE essentials
+        - "mako" # notification daemonQ
+        - "polkit"
+        - "mate-polkit"
+        - "xwayland-satellite"
+        - "tuned-ppd"
+        - "upower"
+        - "adwaita-fonts-all"
+        - "adwaita-icon-theme"
+        - "desktop-backgrounds-basic"
+        - "gvfs"
+        - "gvfs-mtp"
+        - "gvfs-fuse"
+        - "gvfs-nfs"
+        - "gvfs-smb"
+        - "xdg-desktop-portal-gtk"
+        - "xdg-desktop-portal-gnome"
+        - "gnome-keyring"
+        # Screen recording
+        - "grim"
+        - "slurp"
+        - "wf-recorder"
+  - type: systemd
+    user:
+      enabled:
+        - "dsearch.service"
+    system:
+      enabled:
+        - "firstboot-user-create.service"
+        - "greetd.service"
+  - type: script
+    snippets:
+      # --global -> global user instance, same as running --user for all users
+      - "systemctl --global add-wants niri.service dms"
+      - "systemctl --global add-wants niri.service mako.service"

@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+STATE_DIR="/var/lib/fedora-niri"
+MARKER="$STATE_DIR/firstboot-user-created"
+
+install -d -m 0755 "$STATE_DIR"
+
+# If a suitable human user already exists, this is probably
+# an existing installation/rebase. Do not run first-time setup.
+if getent passwd | awk -F: '
+    $3 >= 1000 && $7 !~ /(nologin|false)$/ {
+        found=1
+    }
+    END {
+        exit !found
+    }
+'; then
+    touch "$MARKER"
+    exit 0
+fi
+
+clear
+echo "Create initial user."
+echo
+
+while true; do
+    read -rp "Username: " username
+
+    if ! [[ "$username" =~ ^[a-z_][a-z0-9_-]*$ ]]; then
+        echo "Invalid username."
+        continue
+    fi
+
+    if getent passwd "$username" >/dev/null; then
+        echo "User '$username' already exists."
+        continue
+    fi
+
+    break
+done
+
+read -rp "Full name: " realname
+
+useradd \
+    --create-home \
+    --shell /bin/bash \
+    --groups wheel \
+    --comment "$realname" \
+    "$username"
+
+passwd "$username"
+
+touch "$MARKER"
