@@ -10,6 +10,7 @@ modules:
     repos:
       copr:
         - wezfurlong/wezterm-nightly
+        - scottames/ghostty
         - bigjapka/VeraCrypt
   - type: dnf
     install:
@@ -18,6 +19,7 @@ modules:
         - "flatpak-builder"
         - "foundry"
         - "libratbag-ratbagd"
+        - "curl"
         - "steam-devices"
         - "google-noto-sans-cjk-fonts"
         - "google-noto-serif-cjk-fonts"
@@ -30,6 +32,7 @@ modules:
         - "libi2c-devel"
         - "wezterm"
         - "blackbox-terminal"
+        - "ghostty"
         - "veracrypt"
         - "snap"
   - type: script
