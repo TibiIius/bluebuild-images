@@ -10,7 +10,8 @@ modules:
     repos:
       copr:
         - wezfurlong/wezterm-nightly
-        - scottames/ghostty
+        # - scottames/ghostty # stable
+        - boydkelly/ghostty-tip # tip/nightly
         - bigjapka/VeraCrypt
   - type: dnf
     install:
