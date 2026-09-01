@@ -23,8 +23,6 @@ modules:
         - "dms-greeter"
         # GUI apps
         - "nautilus" # needed for file picker
-        - "nautilus-admin-gtk4" # Open/Edit as root
-        - "nautilus-open-any-terminal"
         # DE essentials
         - "initial-setup"
         - "mako" # notification daemonQ
