@@ -10,7 +10,9 @@ modules:
     repos:
       copr:
         - wezfurlong/wezterm-nightly
-        - scottames/ghostty
+        # - scottames/ghostty # stable
+        - boydkelly/ghostty-tip # tip/nightly
+        - "ferdiu/lan-mouse"
         - bigjapka/VeraCrypt
   - type: dnf
     install:
@@ -19,6 +21,7 @@ modules:
         - "flatpak-builder"
         - "foundry"
         - "libratbag-ratbagd"
+        - "lan-mouse"
         - "curl"
         - "steam-devices"
         - "google-noto-sans-cjk-fonts"
@@ -35,6 +38,7 @@ modules:
         - "ghostty"
         - "veracrypt"
         - "snap"
+        - "qt6-qtwebsockets"
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"
