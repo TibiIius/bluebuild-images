@@ -38,6 +38,7 @@ modules:
         - "ghostty"
         - "veracrypt"
         - "snap"
+        - "qt6-qtwebsockets"
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"
