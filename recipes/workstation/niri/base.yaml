@@ -14,7 +14,7 @@ modules:
   - type: dnf
     install:
       packages:
-        # Niri base
+        # Niri
         - "niri"
         # Shell/greeter
         - "quickshell"
@@ -22,17 +22,13 @@ modules:
         - "greetd"
         - "dms-greeter"
         # GUI apps
-        - "nemo" # file manager
-        - "nemo-fileroller" # file manager
-        - "nemo-preview" # file manager
         - "nautilus" # needed for file picker
-        # - "nautilus-admin-gtk4" # Open/Edit as root
-        # - "nautilus-open-any-terminal"
+        - "nautilus-admin-gtk4" # Open/Edit as root
+        - "nautilus-open-any-terminal"
         # DE essentials
         - "initial-setup"
         - "mako" # notification daemonQ
         - "polkit"
-        - "mate-polkit"
         - "xwayland-satellite"
         - "tuned-ppd"
         - "upower"
@@ -59,8 +55,3 @@ modules:
       enabled:
         - "greetd.service"
         - "initial-setup.service"
-  - type: script
-    snippets:
-      # --global -> global user instance, same as running --user for all users
-      - "systemctl --global add-wants niri.service dms"
-      - "systemctl --global add-wants niri.service mako.service"
