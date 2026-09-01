@@ -25,7 +25,6 @@ modules:
         - "nautilus" # needed for file picker
         # DE essentials
         - "initial-setup"
-        - "mako" # notification daemonQ
         - "polkit"
         - "xwayland-satellite"
         - "tuned-ppd"
@@ -53,3 +52,7 @@ modules:
       enabled:
         - "greetd.service"
         - "initial-setup.service"
+  - type: script
+    snippets:
+      # --global -> global user instance, same as running --user for all users
+      - "systemctl --global add-wants niri.service dms"
