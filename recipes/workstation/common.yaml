@@ -9,7 +9,6 @@ modules:
   - type: dnf
     repos:
       copr:
-        - wezfurlong/wezterm-nightly
         # - scottames/ghostty # stable
         - boydkelly/ghostty-tip # tip/nightly
         - "ferdiu/lan-mouse"
@@ -33,8 +32,6 @@ modules:
         - "i2c-tools"
         - "libi2c"
         - "libi2c-devel"
-        - "wezterm"
-        - "blackbox-terminal"
         - "ghostty"
         - "veracrypt"
         - "snap"
