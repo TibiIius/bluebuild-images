@@ -13,6 +13,11 @@ modules:
         - "yalter/niri"
   - type: dnf
     install:
+      exclude:
+        - waybar
+        - mako
+        - alacritty
+        - fuzzel
       packages:
         # Niri
         - "niri"
