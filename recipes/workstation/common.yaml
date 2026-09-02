@@ -36,6 +36,7 @@ modules:
         - "veracrypt"
         - "snap"
         - "qt6-qtwebsockets"
+        - "qt6-qtwebsockets-devel"
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"
