@@ -48,6 +48,7 @@ modules:
         - "xdg-desktop-portal-gtk"
         - "xdg-desktop-portal-gnome"
         - "gnome-keyring"
+        - "gnome-online-accounts"
         # Screen recording
         - "grim"
         - "slurp"
