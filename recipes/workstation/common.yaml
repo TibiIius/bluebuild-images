@@ -13,6 +13,8 @@ modules:
         - boydkelly/ghostty-tip # tip/nightly
         - "ferdiu/lan-mouse"
         - bigjapka/VeraCrypt
+        # For Wallpaper Engine
+        - caoturkey/Celestia
   - type: dnf
     install:
       packages:
@@ -37,6 +39,7 @@ modules:
         - "snap"
         - "qt6-qtwebsockets"
         - "qt6-qtwebsockets-devel"
+        - "linux-wallpaperengine"
   - type: script
     snippets:
       - "update-desktop-database /usr/share/applications/"
