@@ -9,4 +9,8 @@ image-version: latest
 modules:
   - from-file: workstation/niri/base.yaml
   - from-file: workstation/common-nvidia.yaml
+  - type: files
+    files:
+      - source: nvidia/niri
+        destination: /
   - type: signing
