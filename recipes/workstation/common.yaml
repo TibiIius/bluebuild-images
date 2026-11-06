@@ -9,8 +9,7 @@ modules:
   - type: dnf
     repos:
       copr:
-        # - scottames/ghostty # stable
-        - boydkelly/ghostty-tip # tip/nightly
+        - scottames/ghostty # stable
         - "ferdiu/lan-mouse"
         - bigjapka/VeraCrypt
   - type: dnf
